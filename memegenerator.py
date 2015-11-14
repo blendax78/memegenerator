@@ -9,18 +9,19 @@ import sys
 
 
 def make_meme(topString, bottomString, filename):
-
-	img = Image.open(filename)
+	# Fill in image_path variable with full path to memegenerator
+	img_path = ''
+	img = Image.open("%s/%s" % (img_path, filename))
 	imageSize = img.size
 
 	# find biggest font size that works
 	fontSize = int(imageSize[1]/5)
-	font = ImageFont.truetype("/Library/Fonts/Impact.ttf", fontSize)
+	font = ImageFont.truetype("%s/%s" % (img_path, "Impact.ttf"), fontSize)
 	topTextSize = font.getsize(topString)
 	bottomTextSize = font.getsize(bottomString)
 	while topTextSize[0] > imageSize[0]-20 or bottomTextSize[0] > imageSize[0]-20:
 		fontSize = fontSize - 1
-		font = ImageFont.truetype("/Library/Fonts/Impact.ttf", fontSize)
+		font = ImageFont.truetype("%s/%s" % (img_path, "Impact.ttf"), fontSize)
 		topTextSize = font.getsize(topString)
 		bottomTextSize = font.getsize(bottomString)
 
@@ -47,7 +48,7 @@ def make_meme(topString, bottomString, filename):
 	draw.text(topTextPosition, topString, (255,255,255), font=font)
 	draw.text(bottomTextPosition, bottomString, (255,255,255), font=font)
 
-	img.save("temp.png")
+	img.save("%s/temp.png" % img_path)
 
 def get_upper(somedata):
 	'''

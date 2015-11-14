@@ -21,6 +21,10 @@ Again, the Generator is not that complicated, if you do not want to use a Workfl
 
 To install the Alfred-Workflow, you just have to Open it.
 
+## Code Update
+
+Make sure to set the img_path variable to the full path of the memegenerator directory.
+
 ## Command-Line Usage
 
 The memegenerator.py uses images with the extension `.jpg` in the same folder it is in.
